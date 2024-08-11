@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="c.css">
+</head>
+
+<body>
+    <div class="audio-container">
+        <div class="title">
+          <h2 id="title-hebrew">שם ההקלטה בעברית</h2>
+          <h3 id="title-english">Recording Title in English</h3>
+        </div>
+        <img src="" alt="Profile Image" class="profile-image" id="profile-image">
+        <div class="audio-player">
+          <audio controls id="audio-player">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+    </div>
+
+    <script>
+        // פונקציה לבחירת הקלטה לפי סוף ה-URL
+        function selectRecording() {
+            // קבלת ה-URL הנוכחי
+            const url = window.location.href;
+            // קבלת הסוף של ה-URL (החלק אחרי הסלאש האחרון)
+            const recordingName = url.split('/').pop();
+
+            // הגדרת הנתיב לקובץ הקול
+            const audioSource = recordingName + '.mp3';
+            const profileImage = recordingName + '.jpg'; // ניתן לשנות את הסיומת במידת הצורך
+
+            // עדכון מקור ה-Audio
+            const audioPlayer = document.getElementById('audio-player');
+            audioPlayer.src = audioSource;
+
+            // עדכון שם ההקלטה בעברית ובאנגלית
+            document.getElementById('title-hebrew').innerText = `${recordingName}`;
+            document.getElementById('title-english').innerText = ` ${recordingName}`;
+
+            // עדכון מקור התמונה
+            const imageElement = document.getElementById('profile-image');
+            imageElement.src = 'מטבע בצלאל.png';
+        }
+
+        // קריאה לפונקציה כאשר העמוד נטען
+        window.onload = selectRecording;
+    </script>
+</body>
+
+</html>

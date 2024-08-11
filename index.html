@@ -14,7 +14,7 @@
           <h2 id="title-hebrew">שם ההקלטה בעברית</h2>
           <h3 id="title-english">Recording Title in English</h3>
         </div>
-        <img src="" alt="Profile Image" class="profile-image" id="profile-image">
+        <img src="records/" alt="Profile Image" class="profile-image" id="profile-image">
         <div class="audio-player">
           <audio controls id="audio-player">
             Your browser does not support the audio element.
@@ -37,11 +37,10 @@
             if (recordingName) {
                 // הגדרת הנתיב לקובץ הקול
                 const audioSource = recordingName + '.mp3';
-                const profileImage = recordingName + '.jpg'; // ניתן לשנות את הסיומת במידת הצורך
 
                 // עדכון מקור ה-Audio
                 const audioPlayer = document.getElementById('audio-player');
-                audioPlayer.src = audioSource;
+                audioPlayer.src = './records/'+audioSource;
 
                 // עדכון שם ההקלטה בעברית ובאנגלית
                 document.getElementById('title-hebrew').innerText = ` ${recordingName}`;

@@ -23,28 +23,38 @@
     </div>
 
     <script>
-        // פונקציה לבחירת הקלטה לפי סוף ה-URL
+        // פונקציה לקבלת פרמטר מה-URL
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // פונקציה לבחירת הקלטה לפי הפרמטר של ה-URL
         function selectRecording() {
-            // קבלת ה-URL הנוכחי
-            const url = window.location.href;
-            // קבלת הסוף של ה-URL (החלק אחרי הסלאש האחרון)
-            const recordingName = url.split('/').pop();
+            // קבלת הפרמטר 'recording' מה-URL
+            const recordingName = getUrlParameter('recording');
 
-            // הגדרת הנתיב לקובץ הקול
-            const audioSource = recordingName + '.mp3';
-            const profileImage = recordingName + '.jpg'; // ניתן לשנות את הסיומת במידת הצורך
+            if (recordingName) {
+                // הגדרת הנתיב לקובץ הקול
+                const audioSource = recordingName + '.mp3';
+                const profileImage = recordingName + '.jpg'; // ניתן לשנות את הסיומת במידת הצורך
 
-            // עדכון מקור ה-Audio
-            const audioPlayer = document.getElementById('audio-player');
-            audioPlayer.src = audioSource;
+                // עדכון מקור ה-Audio
+                const audioPlayer = document.getElementById('audio-player');
+                audioPlayer.src = audioSource;
 
-            // עדכון שם ההקלטה בעברית ובאנגלית
-            document.getElementById('title-hebrew').innerText = `${recordingName}`;
-            document.getElementById('title-english').innerText = ` ${recordingName}`;
+                // עדכון שם ההקלטה בעברית ובאנגלית
+                document.getElementById('title-hebrew').innerText = ` ${recordingName}`;
+                document.getElementById('title-english').innerText = ` ${recordingName}`;
 
-            // עדכון מקור התמונה
-            const imageElement = document.getElementById('profile-image');
-            imageElement.src = 'מטבע בצלאל.png';
+                // עדכון מקור התמונה
+                const imageElement = document.getElementById('profile-image');
+                imageElement.src = 'מטבע בצלאל.png';
+            } else {
+                // טיפול במקרה שלא נמצא פרמטר
+                document.getElementById('title-hebrew').innerText = `לא נמצאה הקלטה`;
+                document.getElementById('title-english').innerText = `Recording not found`;
+            }
         }
 
         // קריאה לפונקציה כאשר העמוד נטען

@@ -9,16 +9,16 @@
 </head>
 
 <body>
+    <img src="לוגו השלוחה החרגית של בצלאל ורוד.png" alt="Logo" class="header-logo">
+
     <div class="audio-container">
         <div class="title">
-          <h2 id="title-hebrew">שם ההקלטה בעברית</h2>
-          <h3 id="title-english">Recording Title in English</h3>
+            <h2 id="title-hebrew">שם ההקלטה בעברית</h2>
+            <h3 id="title-english">Recording Title in English</h3>
         </div>
-        <img src="records/" alt="Profile Image" class="profile-image" id="profile-image">
-        <div class="audio-player">
-          <audio controls id="audio-player">
-            Your browser does not support the audio element.
-          </audio>
+        <img src="" alt="Profile Image" class="profile-image" id="profile-image">
+        <div id="audio-players">
+            <!-- כאן יתווספו נגני האודיו -->
         </div>
     </div>
 
@@ -29,26 +29,47 @@
             return urlParams.get(name);
         }
 
+        // פונקציה ליצירת נגן אודיו
+        function createAudioPlayer(src) {
+            const audioPlayer = document.createElement('audio');
+            audioPlayer.controls = true;
+            audioPlayer.src = './records/' + src;
+            return audioPlayer;
+        }
+
         // פונקציה לבחירת הקלטה לפי הפרמטר של ה-URL
         function selectRecording() {
             // קבלת הפרמטר 'recording' מה-URL
             const recordingName = getUrlParameter('recording');
 
             if (recordingName) {
-                // הגדרת הנתיב לקובץ הקול
-                const audioSource = recordingName + '.mp3';
+                let audioSources = [];
 
-                // עדכון מקור ה-Audio
-                const audioPlayer = document.getElementById('audio-player');
-                audioPlayer.src = './records/'+audioSource;
+                // בחירת הקלטות לפי שם
+                if (recordingName == 'שנה ושרה' || recordingName == 'שרה קוח') {
+                    audioSources = [`${recordingName}.mp3`,`${recordingName} אנגלית.mp3`, `${recordingName} צרפתית.mp3`];
+                } else {
+                    audioSources = [`${recordingName}.mp3`];
+                }
+
+                // הוספת נגני אודיו לכל אחת מההקלטות
+                const audioPlayersContainer = document.getElementById('audio-players');
+                audioPlayersContainer.innerHTML = ''; // ניקוי קודמים
+
+                audioSources.forEach(src => {
+                    const player = createAudioPlayer(src);
+
+                    audioPlayersContainer.appendChild(player);
+                });
 
                 // עדכון שם ההקלטה בעברית ובאנגלית
                 document.getElementById('title-hebrew').innerText = ` ${recordingName}`;
-                document.getElementById('title-english').innerText = ` ${recordingName}`;
-
+                if (recordingName == 'שנה ושרה' || recordingName == 'שרה קוח') 
+                    document.getElementById('title-english').innerText = `עברית | אנגלית | צרפתית`;
+else                     document.getElementById('title-english').innerText ="עברית"
                 // עדכון מקור התמונה
                 const imageElement = document.getElementById('profile-image');
-                imageElement.src = 'מטבע בצלאל.png';
+                imageElement.src = 'מטבע בצלאל חדש.gif';
             } else {
                 // טיפול במקרה שלא נמצא פרמטר
                 document.getElementById('title-hebrew').innerText = `לא נמצאה הקלטה`;

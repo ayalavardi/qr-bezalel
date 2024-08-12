@@ -1,79 +1,86 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #000000;
-    color: white;
     font-family: Arial, sans-serif;
-}
-  
-.audio-container {
+    background-color: #000;
+    color: #FFFFFF;
+    border: 15px solid #EAD7D7;
+    /* Soft pinkish border */
+    background-color: #1A1A1A;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
+    min-height: 100vh;
+    position: relative;
 }
-  
+
+.header-logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 200px;
+    /* Adjust size as necessary */
+}
+
+.audio-container {
+    padding-top: 70px;
+    flex: 1;
+    /* Ensures that this section takes up available space */
+}
+
 .title {
-    text-align: right;
-    padding: 20px;
-    margin-top: 20vh; /* כדי להקפיץ את הטקסט כלפי מטה */
+    margin-bottom: 30px;
+    color: #EAD7D7;
 }
-  
-.title h2, .title h3 {
+
+.title h2,
+.title h3 {
     margin: 0;
 }
 
-.profile-image {
-    margin-top: 20px;
-    max-width: 200px; /* מגדיר את הרוחב המקסימלי של התמונה */
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-.profile-image {
-    margin-top: 20px;
-    max-width: 200px; /* מגדיל את הרוחב המקסימלי של התמונה */
-    border-radius: 50%; /* שומר על הצורה העגולה של התמונה */
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+#title-hebrew {
+    font-size: 36px;
+    font-weight: bold;
 }
 
-.audio-player {
-    background-color: #DABFC4;
-    padding: 20px;
-    text-align: center;
+#title-english {
+    font-size: 24px;
+    font-weight: normal;
 }
-  
-audio {
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 20px auto;
+    display: block;
+}
+
+#audio-players {
+    background-color: #EAD7D7;
     width: 100%;
-    height: 50px; /* שולט על הגובה של הנגן */
-    background-color: #DABFC4;
-    color: #000; /* צבע הטקסט בשחור */
-    border-radius: 10px;
-    border: none;
-    outline: none;
-}
-  
-/* אפשרות נוספת להוריד חלקים מסוימים */
-audio::-webkit-media-controls-enclosure {
-    background-color: #DABFC4;
-    border-radius: 10px;
-}
-  
-audio::-webkit-media-controls-panel {
-    background-color: #DABFC4;
-    color: #000;
-}
-audio::-webkit-media-controls-enclosure {
-    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    min-height: 70px;
 }
 
-audio::-webkit-media-controls-panel {
-    display: flex;
-    flex-direction: row;
+audio {
+    background-color: #EAD7D7;
+    width: 100%;
+    margin: 0;
+    /* No margin to ensure no gaps between audio players */
 }
 
 audio::-webkit-media-controls-download-button {
     display: none;
+}
+
+audio::-webkit-media-controls-enclosure {
+    background-color: #EAD7D7;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: #EAD7D7;
+    color: #000;
 }

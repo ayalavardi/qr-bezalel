@@ -47,7 +47,7 @@
 
                 // בחירת הקלטות לפי שם
                 if (recordingName == 'שנה ושרה' || recordingName == 'שרה קוך') {
-                    audioSources = [`${recordingName}.mp3`,`${recordingName} אנגלית.mp3`, `${recordingName} צרפתית.mp3`];
+                    audioSources = [`${recordingName}.mp3`, `${recordingName} אנגלית.mp3`, `${recordingName} צרפתית.mp3`];
                 } else {
                     audioSources = [`${recordingName}.mp3`];
                 }
@@ -64,9 +64,11 @@
 
                 // עדכון שם ההקלטה בעברית ובאנגלית
                 document.getElementById('title-hebrew').innerText = ` ${recordingName}`;
-                if (recordingName == 'שנה ושרה' || recordingName == 'שרה קוח') 
+                if (recordingName == 'שנה ושרה' || recordingName == 'שרה קוח')
                     document.getElementById('title-english').innerText = `עברית | אנגלית | צרפתית`;
-else                     document.getElementById('title-english').innerText ="עברית"
+                else if(recordingName == 'אלישרה')
+                document.getElementById('title-english').innerText = "צרפתית"
+                else document.getElementById('title-english').innerText = "עברית"
                 // עדכון מקור התמונה
                 const imageElement = document.getElementById('profile-image');
                 imageElement.src = 'מטבע בצלאל חדש.gif';

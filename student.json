@@ -1,0 +1,31 @@
+{
+    "visual communication": {
+        "ayala": [
+            "ayala-he",
+            "ayala-en",
+            "ayala-fr"
+        ],
+        "shira": [
+            "shira-he"
+        ]
+    },
+    "architecture": {
+        "ayala": [
+           "shish-en"
+        ],
+        "shira": [
+            "dodo-he",
+            "dodo-en"
+        ]
+    },
+    "art": {
+        "ayala": [
+            "1",
+            "2",
+            "3"
+        ],
+        "shira": [
+            "1"
+        ]
+    }
+}

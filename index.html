@@ -61,13 +61,12 @@
 
                     audioPlayersContainer.appendChild(player);
                 });
-
                 // עדכון שם ההקלטה בעברית ובאנגלית
                 document.getElementById('title-hebrew').innerText = ` ${recordingName}`;
-                if (recordingName == 'שנה ושרה' || recordingName == 'שרה קוח')
-                    document.getElementById('title-english').innerText = `עברית | אנגלית | צרפתית`;
+                if (recordingName == 'שאנה גנדוס ושרה גייקובס' || recordingName == 'שרה קוך')
+                    document.getElementById('title-english').innerText = `עברית | English | Français`;
                 else if(recordingName == 'אלישרה')
-                document.getElementById('title-english').innerText = "צרפתית"
+                document.getElementById('title-english').innerText = "Français"
                 else document.getElementById('title-english').innerText = "עברית"
                 // עדכון מקור התמונה
                 const imageElement = document.getElementById('profile-image');
